@@ -163,6 +163,9 @@ class FeedSource extends DataSource {
 			if (!empty($this->_feeds)) {
 				foreach ($query['conditions'] as $source => $url) {
 					$results = $this->_feeds[$url] + $results;
+					if (is_array($this->_feeds[$url])) {
+						$results = $this->_feeds[$url] + $results;
+					}
 				}
 
 				$results = array_filter($results);
